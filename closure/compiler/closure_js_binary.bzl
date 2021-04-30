@@ -242,15 +242,7 @@ def _impl(ctx):
 
     all_args = ctx.actions.args()
     all_args.add_all(args)
-
-    # We shall now pass all transitive sources, including externs files.
-    all_args.add_all(
-        js.srcs,
-        map_each = _get_src_path,
-        expand_directories = True,
-    )
-    inputs.extend(js.srcs.to_list())
-
+    
     # As a matter of policy, we don't add attributes to this rule just because we
     # can. We only add attributes when the Skylark code adds value beyond merely
     # passing those flags along to the Closure Compiler. So users wishing to use
@@ -259,6 +251,14 @@ def _impl(ctx):
     # could pass `defs = ["--env=CUSTOM"]` to get rid of browser externs and
     # slightly speed up compilation.
     all_args.add_all(ctx.attr.defs)
+
+    # We shall now pass all transitive sources, including externs files.
+    all_args.add_all(
+        js.srcs,
+        map_each = _get_src_path,
+        expand_directories = True,
+    )
+    inputs.extend(js.srcs.to_list())
 
     # Insert an edge into the build graph that produces the minified version of
     # all JavaScript sources in the transitive closure, sans dead code.

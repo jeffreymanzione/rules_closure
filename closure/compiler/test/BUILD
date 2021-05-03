@@ -237,12 +237,11 @@ sh_test(
 closure_js_binary(
     name = "bin_with_defs",
     deps = ["hello_lib"],
-    defs = ["--print_ast"],
-
+    defs = ["--checks_only"],
 )
 
 file_test(
     name = "defs_test",
-    regexp = "digraph AST {",
+    content = "",
     file = "bin_with_defs.js",
 )

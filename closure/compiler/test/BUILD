@@ -232,3 +232,17 @@ sh_test(
         ":exports_data",
     ],
 )
+
+# Test defs argument of closure_binary works fine
+closure_js_binary(
+    name = "bin_with_defs",
+    deps = ["hello_lib"],
+    defs = ["--print_ast"],
+
+)
+
+file_test(
+    name = "defs_test",
+    regexp = "digraph AST {",
+    file = "bin_with_defs.js",
+)

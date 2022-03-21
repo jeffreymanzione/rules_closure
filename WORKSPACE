@@ -2,9 +2,10 @@ workspace(name = "io_bazel_rules_closure")
 
 load("@bazel_tools//tools/build_defs/repo:java.bzl", "java_import_external")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
 load("@io_bazel_rules_closure//closure:repositories.bzl", "rules_closure_dependencies", "rules_closure_toolchains")
+
 rules_closure_dependencies()
+
 rules_closure_toolchains()
 
 http_archive(
@@ -130,4 +131,13 @@ java_import_external(
     licenses = ["notice"],  # Apache 2.0
     testonly_ = 1,
     deps = ["@com_google_guava"],
+)
+
+java_import_external(
+    name = "com_google_errorprone_annotations",
+    jar_sha256 = "721cb91842b46fa056847d104d5225c8b8e1e8b62263b993051e1e5a0137b7ec",
+    jar_urls = [
+        "https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar",
+    ],
+    licenses = ["notice"],  # Apache 2.0
 )

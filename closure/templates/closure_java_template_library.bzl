@@ -144,7 +144,6 @@ def _gen_soy_java_wrappers(
               " --outputDirectory=$(@D)" +
               " --javaPackage=" + java_package +
               " --javaClassNameSource=filename" +
-              " --allowExternalCalls=" + str(allow_external_calls) +
               additional_flags +
               # Include the sources and deps files as command line flags.
               " $$(cat $(location " + srcs_flag_file_name + "))" +

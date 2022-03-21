@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])  # Apache 2.0
-
 load("@rules_java//java:defs.bzl", "java_library")
+
+licenses(["notice"])  # Apache 2.0
 
 java_library(
     name = "jscomp",
@@ -45,6 +45,7 @@ java_library(
         "//java/io/bazel/rules/closure/worker",
         "@args4j",
         "@com_google_dagger",
+        "@com_google_errorprone_annotations",
         "@com_google_guava",
         "@com_google_protobuf//:protobuf_java",
     ],

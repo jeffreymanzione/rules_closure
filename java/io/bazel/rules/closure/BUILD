@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])  # Apache 2.0
-
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@rules_java//java:defs.bzl", "java_binary", "java_library", "java_proto_library")
+
+licenses(["notice"])  # Apache 2.0
 
 java_binary(
     name = "ClosureWorker",
